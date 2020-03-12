@@ -25,6 +25,19 @@ public class ConnectionServiceImpl implements IConnectionService{
 	public Connections findById(Long id) {
 		return connectionRepository.findById(id).orElse(null);
 	}
+
+	@Override
+	@Transactional
+	public void updateCreateConnection(Connections connection) {
+		connectionRepository.save(connection);		
+	}
+
+	@Override
+	@Transactional
+	public void deleteConnection(Long id) {
+		connectionRepository.deleteById(id);
+		
+	}
 	
 	
 }

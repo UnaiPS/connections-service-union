@@ -8,4 +8,8 @@ public interface IConnectionService {
 	public List<Connections> findAll();
 	
 	public Connections findById(Long id);
+	
+	public void updateCreateConnection(Connections connection);
+	
+	public void deleteConnection(Long id);
 }
