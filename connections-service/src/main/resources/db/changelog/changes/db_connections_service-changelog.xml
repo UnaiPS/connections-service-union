@@ -1,0 +1,183 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.8.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet author="Certiorem (generated)" id="1583842055571-1">
+        <createTable tableName="connections">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="active" type="BIT(1)"/>
+            <column name="alias" type="VARCHAR(255)">
+                <constraints unique="true"/>
+            </column>
+            <column name="create_date" type="date"/>
+            <column name="host" type="VARCHAR(255)"/>
+            <column name="pass" type="VARCHAR(255)"/>
+            <column name="port" type="INT"/>
+            <column name="user" type="VARCHAR(255)"/>
+            <column name="id_type" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Certiorem (generated)" id="1583842055571-2">
+        <createTable tableName="connections_metadates">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="id_metadate" type="BIGINT"/>
+            <column name="id_connection" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Certiorem (generated)" id="1583842055571-3">
+        <createTable tableName="metadates">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="active" type="BIT(1)"/>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="id_parent" type="BIGINT"/>
+            <column name="level" type="INT"/>
+            <column name="meta" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Certiorem (generated)" id="1583842055571-4">
+        <createTable tableName="types">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="driver" type="VARCHAR(255)"/>
+            <column name="type" type="VARCHAR(255)"/>
+            <column name="id_type_group" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Certiorem (generated)" id="1583842055571-5">
+        <createTable tableName="types_groups">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="type_group" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Certiorem (generated)" id="1583842055571-6">
+        <createIndex indexName="FK8jivfgclljyay6jexaa7y0un9" tableName="connections_metadates">
+            <column name="id_metadate"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Certiorem (generated)" id="1583842055571-7">
+        <createIndex indexName="FKdhlydpojf9m7u7r8tph5scekq" tableName="connections">
+            <column name="id_type"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Certiorem (generated)" id="1583842055571-8">
+        <createIndex indexName="FKo4u9t23lmdcet7klksv5kjav6" tableName="types">
+            <column name="id_type_group"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Certiorem (generated)" id="1583842055571-9">
+        <createIndex indexName="FKtpdc3xsqcgf2hf3us9tmq3ahf" tableName="connections_metadates">
+            <column name="id_connection"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Certiorem (generated)" id="1583842055571-10">
+        <addForeignKeyConstraint baseColumnNames="id_metadate" baseTableName="connections_metadates" constraintName="FK8jivfgclljyay6jexaa7y0un9" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="metadates" validate="true"/>
+    </changeSet>
+    <changeSet author="Certiorem (generated)" id="1583842055571-11">
+        <addForeignKeyConstraint baseColumnNames="id_type" baseTableName="connections" constraintName="FKdhlydpojf9m7u7r8tph5scekq" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="types" validate="true"/>
+    </changeSet>
+    <changeSet author="Certiorem (generated)" id="1583842055571-12">
+        <addForeignKeyConstraint baseColumnNames="id_type_group" baseTableName="types" constraintName="FKo4u9t23lmdcet7klksv5kjav6" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="types_groups" validate="true"/>
+    </changeSet>
+    <changeSet author="Certiorem (generated)" id="1583842055571-13">
+        <addForeignKeyConstraint baseColumnNames="id_connection" baseTableName="connections_metadates" constraintName="FKtpdc3xsqcgf2hf3us9tmq3ahf" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="connections" validate="true"/>
+    </changeSet>
+    <changeSet author="Certiorem (generated)" id="1584000319164-1">
+        <createTable tableName="connections">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="active" type="BIT(1)"/>
+            <column name="alias" type="VARCHAR(255)">
+                <constraints unique="true"/>
+            </column>
+            <column name="create_date" type="date"/>
+            <column name="host" type="VARCHAR(255)"/>
+            <column name="pass" type="VARCHAR(255)"/>
+            <column name="port" type="INT"/>
+            <column name="user" type="VARCHAR(255)"/>
+            <column name="id_type" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Certiorem (generated)" id="1584000319164-2">
+        <createTable tableName="connections_metadates">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="id_connection" type="BIGINT"/>
+            <column name="id_metadate" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Certiorem (generated)" id="1584000319164-3">
+        <createTable tableName="metadates">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="active" type="BIT(1)"/>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="id_parent" type="BIGINT"/>
+            <column name="level" type="INT"/>
+            <column name="meta" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Certiorem (generated)" id="1584000319164-4">
+        <createTable tableName="types">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="driver" type="VARCHAR(255)"/>
+            <column name="type" type="VARCHAR(255)"/>
+            <column name="id_type_group" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Certiorem (generated)" id="1584000319164-5">
+        <createTable tableName="types_groups">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="type_group" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Certiorem (generated)" id="1584000319164-6">
+        <createIndex indexName="FK8jivfgclljyay6jexaa7y0un9" tableName="connections_metadates">
+            <column name="id_metadate"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Certiorem (generated)" id="1584000319164-7">
+        <createIndex indexName="FKdhlydpojf9m7u7r8tph5scekq" tableName="connections">
+            <column name="id_type"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Certiorem (generated)" id="1584000319164-8">
+        <createIndex indexName="FKo4u9t23lmdcet7klksv5kjav6" tableName="types">
+            <column name="id_type_group"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Certiorem (generated)" id="1584000319164-9">
+        <createIndex indexName="FKtpdc3xsqcgf2hf3us9tmq3ahf" tableName="connections_metadates">
+            <column name="id_connection"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Certiorem (generated)" id="1584000319164-10">
+        <addForeignKeyConstraint baseColumnNames="id_metadate" baseTableName="connections_metadates" constraintName="FK8jivfgclljyay6jexaa7y0un9" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="metadates" validate="true"/>
+    </changeSet>
+    <changeSet author="Certiorem (generated)" id="1584000319164-11">
+        <addForeignKeyConstraint baseColumnNames="id_type" baseTableName="connections" constraintName="FKdhlydpojf9m7u7r8tph5scekq" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="types" validate="true"/>
+    </changeSet>
+    <changeSet author="Certiorem (generated)" id="1584000319164-12">
+        <addForeignKeyConstraint baseColumnNames="id_type_group" baseTableName="types" constraintName="FKo4u9t23lmdcet7klksv5kjav6" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="types_groups" validate="true"/>
+    </changeSet>
+    <changeSet author="Certiorem (generated)" id="1584000319164-13">
+        <addForeignKeyConstraint baseColumnNames="id_connection" baseTableName="connections_metadates" constraintName="FKtpdc3xsqcgf2hf3us9tmq3ahf" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="connections" validate="true"/>
+    </changeSet>
+</databaseChangeLog>
