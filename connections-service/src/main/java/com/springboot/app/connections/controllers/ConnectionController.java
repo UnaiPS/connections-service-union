@@ -31,17 +31,20 @@ public class ConnectionController {
 		}).collect(Collectors.toList());
 	}
 	
+	@CrossOrigin
 	@GetMapping("/findConnectionById/{id}")
 	public Connections findById(@PathVariable Long id) {
 		return connectionService.findById(id);
 	}
 	
+	@CrossOrigin
 	@PostMapping("/createConnection")
 	@ResponseStatus(HttpStatus.CREATED)
 	public void createConnection(@RequestBody Connections connection) {
 		connectionService.updateCreateConnection(connection);
 	}
 	
+	@CrossOrigin
 	@PutMapping("/updateConnection/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
 	public void updateConnection(@RequestBody Connections connection, @PathVariable Long id) {
@@ -56,6 +59,7 @@ public class ConnectionController {
 		connectionService.updateCreateConnection(tempConnection);
 	}
 	
+	@CrossOrigin
 	@DeleteMapping("/deleteConnection/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void deleteConnection(@PathVariable Long id) {
