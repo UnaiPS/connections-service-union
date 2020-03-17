@@ -17,11 +17,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.app.connections.models.entity.Connections;
 import com.springboot.app.connections.models.service.IConnectionService;
+import com.springboot.app.connections.models.service.ITypesService;
 
 @RestController
 public class ConnectionController {
 	@Autowired
 	IConnectionService connectionService;
+	
+	@Autowired
+	ITypesService typesService;
 	
 	@CrossOrigin
 	@GetMapping("/findAllConnections")
@@ -45,9 +49,9 @@ public class ConnectionController {
 	}
 	
 	@CrossOrigin
-	@PutMapping("/updateConnection/{id}")
+	@PutMapping("/updateConnection/{id}/type/{idType}")
 	@ResponseStatus(HttpStatus.CREATED)
-	public void updateConnection(@RequestBody Connections connection, @PathVariable Long id) {
+	public void updateConnection(@RequestBody Connections connection, @PathVariable Long id, @PathVariable Long idType) {
 		Connections tempConnection = connectionService.findById(id);
 		tempConnection.setHost(connection.getHost());
 		tempConnection.setUser(connection.getUser());
@@ -55,6 +59,7 @@ public class ConnectionController {
 		tempConnection.setPort(connection.getPort());
 		tempConnection.setPass(connection.getPass());
 		tempConnection.setActive(connection.getActive());
+		tempConnection.setTypes(typesService.findTypeById(idType));
 		
 		connectionService.updateCreateConnection(tempConnection);
 	}
