@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.springboot.app.connections.models.entity.Types;
+import com.springboot.app.commons.models.entity.Types;
 import com.springboot.app.connections.models.service.ITypesService;
 
 @RestController

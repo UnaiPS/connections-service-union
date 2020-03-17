@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.springboot.app.connections.models.entity.Connections;
+import com.springboot.app.commons.models.entity.Connections;
 import com.springboot.app.connections.models.repository.ConnectionRepository;
 
 @Service
