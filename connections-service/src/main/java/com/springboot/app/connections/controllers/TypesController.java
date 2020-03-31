@@ -31,7 +31,7 @@ public class TypesController {
 			return type;
 		}).collect(Collectors.toList());
 	}
-	
+
 	@CrossOrigin
 	@GetMapping("/findTypeById/{id}")
 	public Types findById(@PathVariable Long id) {

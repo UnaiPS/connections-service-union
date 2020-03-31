@@ -34,7 +34,7 @@ public class ConnectionController {
 			return connection;
 		}).collect(Collectors.toList());
 	}
-	
+
 	@CrossOrigin
 	@GetMapping("/findConnectionById/{id}")
 	public Connections findById(@PathVariable Long id) {
@@ -63,6 +63,7 @@ public class ConnectionController {
 		
 		connectionService.updateCreateConnection(tempConnection);
 	}
+	
 	
 	@CrossOrigin
 	@DeleteMapping("/deleteConnection/{id}")
