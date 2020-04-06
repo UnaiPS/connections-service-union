@@ -4,6 +4,11 @@ import java.util.List;
 
 import com.springboot.app.commons.models.entity.Connections;
 
+/**
+ * 
+ * @author Unai Pérez Sánchez
+ *
+ */
 public interface IConnectionService {
 	public List<Connections> findAll();
 	

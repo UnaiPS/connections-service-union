@@ -8,7 +8,13 @@ import com.springboot.app.commons.models.entity.Connections;
 import com.springboot.app.commons.models.entity.Types;
 import com.springboot.app.commons.models.entity.TypesGroups;
 
-
+/**
+ * 
+ * @author Unai Pérez Sánchez
+ * 
+ * This class is to expose Id's from the objects to appear in the response of the requests.
+ *
+ */
 @Configuration
 public class RepositoryConfig implements RepositoryRestConfigurer{
 	@Override

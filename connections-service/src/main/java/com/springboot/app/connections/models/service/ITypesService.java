@@ -4,6 +4,11 @@ import java.util.List;
 
 import com.springboot.app.commons.models.entity.Types;
 
+/**
+ * 
+ * @author Unai Pérez Sánchez
+ *
+ */
 public interface ITypesService {
 	public List<Types> findAllTypes();
 	
