@@ -20,31 +20,31 @@ import com.springboot.app.connections.models.service.IConnectionsMetadatesServic
 
 @RestController
 public class ConnectionsMetadatesController {
-	
+
 	@Autowired
 	IConnectionsMetadatesService connectionsMetadatesService;
-	
+
 	@CrossOrigin
 	@GetMapping("/findAllConnectionsMetadates")
-	public List<ConnectionsMetadates> findAll(){
+	public List<ConnectionsMetadates> findAll() {
 		return connectionsMetadatesService.findAll().stream().map(connectionMetadate -> {
 			return connectionMetadate;
 		}).collect(Collectors.toList());
 	}
-	
+
 	@CrossOrigin
 	@GetMapping("/findConnectionMetadateById/{id}")
 	public ConnectionsMetadates findById(@PathVariable Long id) {
 		return connectionsMetadatesService.findById(id);
 	}
-	
+
 	@CrossOrigin
 	@PostMapping("/createConnectionMetadate")
 	@ResponseStatus(HttpStatus.CREATED)
 	public void createConnectionMetadate(@RequestBody ConnectionsMetadates connectionMetadate) {
 		connectionsMetadatesService.updateCreateConnectionMetadate(connectionMetadate);
 	}
-	
+
 	@CrossOrigin
 	@PutMapping("/updateConnectionMetadate/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
@@ -52,10 +52,10 @@ public class ConnectionsMetadatesController {
 		ConnectionsMetadates tempConnectionMetadates = connectionsMetadatesService.findById(id);
 		tempConnectionMetadates.setConnection(connectionMetadate.getConnection());
 		tempConnectionMetadates.setMetadates(connectionMetadate.getMetadates());
-		
+
 		connectionsMetadatesService.updateCreateConnectionMetadate(tempConnectionMetadates);
 	}
-	
+
 	@CrossOrigin
 	@DeleteMapping("/deleteConnectionMetadate/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)

@@ -13,4 +13,6 @@ public interface IMetadatesService {
 	public void updateCreateMetadate(Metadates metadate);
 	
 	public void deleteMetadate(Long id);
+	
+	public List<Metadates> findAllConnectionMetadates(Long id);
 }

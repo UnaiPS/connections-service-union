@@ -1,5 +1,6 @@
 package com.springboot.app.connections.controllers;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -65,4 +66,13 @@ public class MetadatesController {
 	public void deleteMetadate(@PathVariable Long id) {
 		metadatesService.deleteMetadate(id);
 	}
+	
+	@CrossOrigin
+	@GetMapping("/findConnectionsMetadatesById/{id}")
+	public List<Metadates> tableConnectionMetadates(@PathVariable Long id){
+		return ((Collection<Metadates>) metadatesService.findAllConnectionMetadates(id)).stream().map(Meta ->{
+			return Meta;
+		}).collect(Collectors.toList());
+	}
+	
 }

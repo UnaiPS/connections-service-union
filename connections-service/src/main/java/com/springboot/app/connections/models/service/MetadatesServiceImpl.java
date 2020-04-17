@@ -40,4 +40,9 @@ public class MetadatesServiceImpl implements IMetadatesService{
 		
 	}
 	
+	@Override
+	public List<Metadates> findAllConnectionMetadates(Long id) {
+		return (List<Metadates>) metadatesRepository.allConnectionsMetadatesTable(id);
+	}
+	
 }
