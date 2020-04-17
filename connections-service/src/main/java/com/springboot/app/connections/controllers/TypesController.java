@@ -39,7 +39,7 @@ public class TypesController {
 	 * @return This method returns a List from java.util of Types
 	 */
 	@CrossOrigin
-	@GetMapping("findAllTypes")
+	@GetMapping("/findAllTypes")
 	public List<Types> findAll(){
 		return typesService.findAllTypes().stream().map(type -> {
 			return type;

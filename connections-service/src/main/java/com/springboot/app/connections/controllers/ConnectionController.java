@@ -1,5 +1,8 @@
 package com.springboot.app.connections.controllers;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -70,6 +73,12 @@ public class ConnectionController {
 	@PostMapping("/createConnection")
 	@ResponseStatus(HttpStatus.CREATED)
 	public void createConnection(@RequestBody Connections connection) {
+		//CreatedData opcion de fecha
+		if (connection.getCreateDate() == null) {
+			LocalDate localDate = LocalDate.now();
+			Date date = new Date(localDate.atStartOfDay(ZoneId.of("Europe/Paris")).toEpochSecond() * 1000);
+			connection.setCreateDate(date);
+		}
 		connectionService.updateCreateConnection(connection);
 	}
 	
