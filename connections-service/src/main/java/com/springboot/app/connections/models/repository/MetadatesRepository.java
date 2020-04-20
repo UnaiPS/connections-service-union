@@ -19,6 +19,6 @@ import com.springboot.app.commons.models.entity.Metadates;
 @RepositoryRestResource(path = "metadates")
 public interface MetadatesRepository extends CrudRepository<Metadates, Long>{
 
-	@Query(value = "SELECT * FROM metadates WHERE id IN (SELECT id_metadate FROM connections_metadates WHERE id_connection = :id)", nativeQuery = true)
+	@Query(value = "SELECT * FROM metadates WHERE id IN (SELECT id_metadate FROM connections_metadates WHERE id_connection = :id) AND level = 1", nativeQuery = true)
 	public List<Metadates> allConnectionsMetadatesTable(Long id);
 }
