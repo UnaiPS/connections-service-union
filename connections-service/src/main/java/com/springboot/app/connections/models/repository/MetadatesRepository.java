@@ -21,4 +21,7 @@ public interface MetadatesRepository extends CrudRepository<Metadates, Long>{
 
 	@Query(value = "SELECT * FROM metadates WHERE id IN (SELECT id_metadate FROM connections_metadates WHERE id_connection = :id) AND level = 1", nativeQuery = true)
 	public List<Metadates> allConnectionsMetadatesTable(Long id);
+	
+	@Query(value = "SELECT * FROM metadates WHERE id_parent IN (SELECT id FROM metadates WHERE id IN (SELECT id_metadate FROM connections_metadates WHERE id_connection = :id) AND level = 1 AND meta LIKE :nameTable)", nativeQuery = true)
+	public List<Metadates> allMetadatesOfATable(Long id, String nameTable);
 }

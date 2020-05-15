@@ -75,4 +75,11 @@ public class MetadatesController {
 		}).collect(Collectors.toList());
 	}
 	
+	@CrossOrigin
+	@GetMapping("/findAllMetadatesOfATable/{id}/{nameTable}")
+	public List<Metadates> findAllMetadatesOfATable(@PathVariable Long id, @PathVariable String nameTable){
+		return ((Collection<Metadates>) metadatesService.findAllMetadatesOfATable(id, nameTable)).stream().map(Meta ->{
+			return Meta;
+		}).collect(Collectors.toList());
+	}
 }

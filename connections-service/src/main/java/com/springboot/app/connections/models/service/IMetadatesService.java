@@ -15,4 +15,6 @@ public interface IMetadatesService {
 	public void deleteMetadate(Long id);
 	
 	public List<Metadates> findAllConnectionMetadates(Long id);
+	
+	public List<Metadates> findAllMetadatesOfATable(Long id, String nameTable);
 }
