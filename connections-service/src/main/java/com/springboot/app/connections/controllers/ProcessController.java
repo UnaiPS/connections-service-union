@@ -43,9 +43,12 @@ public class ProcessController {
 	}
 	
 	@CrossOrigin
-	@PostMapping("/createProcess")
+	@PostMapping("/createProcess/origin/{idOrigin}/destination/{idDestination}")
 	@ResponseStatus(HttpStatus.CREATED)
-	public void createProcess(@RequestBody Process process) {
+	public void createProcess(@PathVariable Long idOrigin, @PathVariable Long idDestination) {
+		Process process = new Process();
+		process.setOrigin(connectionService.findById(idOrigin));
+		process.setDestination(connectionService.findById(idDestination));
 		processService.updateCreateProcess(process);
 	}
 	
