@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -43,23 +42,23 @@ public class ProcessController {
 	}
 	
 	@CrossOrigin
-	@PostMapping("/createProcess/origin/{idOrigin}/destination/{idDestination}")
+	@PostMapping("/createProcess/origin/{idOrigin}/destination/{idDestination}/keep/{keepId}")
 	@ResponseStatus(HttpStatus.CREATED)
-	public void createProcess(@PathVariable Long idOrigin, @PathVariable Long idDestination) {
+	public void createProcess(@PathVariable Long idOrigin, @PathVariable Long idDestination, @PathVariable Boolean keepId) {
 		Process process = new Process();
 		process.setOrigin(connectionService.findById(idOrigin));
 		process.setDestination(connectionService.findById(idDestination));
+		process.setKeepIds(keepId);
 		processService.updateCreateProcess(process);
 	}
 	
 	@CrossOrigin
-	@PutMapping("/updateProcess/{id}/origin/{origin}/destination/{destination}")
+	@PutMapping("/updateProcess/{id}/keep/{keepId}")
 	@ResponseStatus(HttpStatus.CREATED)
-	public void updateProcess(@PathVariable Long id, @PathVariable Long origin, @PathVariable Long destination) {
+	public void updateProcess(@PathVariable Long id, @PathVariable Boolean keepId) {
 		Process processToUpdate = new Process();
-		processToUpdate.setId(id);
-		processToUpdate.setOrigin(connectionService.findById(origin));
-		processToUpdate.setDestination(connectionService.findById(destination));
+		processToUpdate = processService.findById(id);
+		processToUpdate.setKeepIds(keepId);
 		processService.updateCreateProcess(processToUpdate);
 	}
 	
