@@ -44,9 +44,14 @@ public class ProcessMetadateController {
 	}
 	
 	@CrossOrigin
-	@PostMapping("/createProcessMetadata")
+	@PostMapping("/createProcessMetadata/process/{process}/origin/{origin}/destination/{destination}")
 	@ResponseStatus(HttpStatus.CREATED)
-	public void createProcessMetadata(@RequestBody ProcessMetadata processMetadata) {
+	public void createProcessMetadata(@PathVariable Long process, @PathVariable Long origin, @PathVariable Long destination) {
+		ProcessMetadata processMetadata = new ProcessMetadata();
+		processMetadata.setProcess(processService.findById(process));
+		processMetadata.setOrigin(metadatesService.findById(origin));
+		processMetadata.setDestination(metadatesService.findById(destination));
+		
 		processMetadataService.updateCreateProcessMetadata(processMetadata);
 	}
 	
